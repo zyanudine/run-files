@@ -1,0 +1,5 @@
+# rerun all old runs
+for x in ./run-files/CD19-miseq/CD19*.sh; do echo $x; bash $x;done
+
+# get all old run names
+grep "run=" *.sh | cut -d= -f2,2 | sort -u

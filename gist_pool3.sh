@@ -1,0 +1,41 @@
+#SN2-18 pool3
+--------
+#varscan
+--
+cdl
+dtype=bam_bai
+plgin=variantCaller   # does not matter
+cpdir=Novartis_GIST_PDX
+project=Auto_user_SN2-18-GIST_A2P2-P3_JK_20_024
+samples="IonXpress_001\|IonXpress_002\|IonXpress_003\|IonXpress_004\|IonXpress_005\|IonXpress_006\|IonXpress_007\|IonXpress_008\|IonXpress_009\|IonXpress_010\|IonXpress_011\|IonXpress_012\|IonXpress_013\|IonXpress_014\|IonXpress_015\|IonXpress_016\|IonXpress_017"
+ext=null
+reffai=hg19.fasta
+roi=GIST_ROI_pool3_torrentSuite_ID_v2.bed
+bar2samplefile=GIST_AmpliSeq_run_barcode_sample_key_sheet_PDX.txt
+
+nohup bash ./codes/Ion-general-varscan-TS3.4.sh $dtype $plgin $project $samples $ext $cpdir $reffai $roi $bar2samplefile 2>&1 | nohup tee -a tmp/$project.nohup
+
+
+#ts3.4
+--
+
+cdl
+dtype=plugin_vc+plugin_cv
+plgin=variantCaller_cp3_out+coverageAnalysis_cp3_out
+cpdir=Novartis_GIST_PDX
+project=Auto_user_SN2-18-GIST_A2P2-P3_JK_20_024
+samples="IonXpress_001\|IonXpress_002\|IonXpress_003\|IonXpress_004\|IonXpress_005\|IonXpress_006\|IonXpress_007\|IonXpress_008\|IonXpress_009\|IonXpress_010\|IonXpress_011\|IonXpress_012\|IonXpress_013\|IonXpress_014\|IonXpress_015\|IonXpress_016\|IonXpress_017"
+roi=GIST_ROI_pool3_torrentSuite_ID_v2.bed
+control=null
+ pl=pool3
+ plg=cp3
+ bcf=/mnt/win-hp/next_gene_seq_wind/share/public/GIST_AmpliSeq_run_barcode_sample_key_sheet_PDX.txt
+ run=`echo $project | sed -e 's/Auto_\|Auto_user_//g' | cut -d'_' -f1,1 | cut -d'-' -f1-2`
+ smps=`echo \`grep $run $bcf | grep $pl | grep $plg | awk -F'\t' '{print $2}'\` | sed -e 's/ /\\\|/g'`   # \` in ``
+ if [ $smps = $samples ] || [ $samples = "all" ] ; then
+nohup bash ./codes/Ion-general-GIST-TS3.4.sh $dtype $plgin $cpdir $project $samples $roi $control 2>&1 | nohup tee -a tmp/$project.nohup
+ fi
+
+
+
+

@@ -1,0 +1,150 @@
+#  for miseq runs 
+1. download from basespace using 90.5 pc  
+2. cp/modify script for new run: using cmd perl
+3. run with 1-nvs.sh 1-incyte.sh etc.
+example:
+ls /mnt/miseq/Illumina/MiSeqAnalysis/ -ltrh ; 0100 is local miseq run number, AWV1A is flow cell number shared to basesapce
+ls /mnt/win-hp/base_space -ltrh    to check download folder
+cp from /mnt/win-hp/base_space/ since download fastq from basespace (see 0030, 0044, 0045 etc. for download bam/fastq from bs and cp from /mnt/win-hp/base_space/, or cp from public)
+mkdir -p seqs/170620_M00662_0159_000000000-B9MB9/fq
+cp -pr /mnt/win-hp/base_space/Qiagen_5samples_FLT3\ ITD-41950913/*/*fastq.gz seqs/170620_M00662_0159_000000000-B9MB9/fq/
+gunzip seqs/170620_M00662_0159_000000000-B9MB9/fq/*
+
+# to search for a run
+grep TMP_04Dec2023_KD_Batch4_R2 /mnt/win-hp1/next_gene_seq_wind/share/QC-monitor/Miseq-check/*
+grep 231108_M00662_0460_000000000-L973J /mnt/win-hp1/next_gene_seq_wind/share/QC-monitor/Miseq-check/*
+grep 231108_M00662_0460_000000000-L973J /mnt/win-hp1/next_gene_seq_wind/share/QC-monitor/Miseq-check/* | grep mnt | grep miseq
+cat miseq-runs | awk '{printf $1"\\|"}'
+cat miseq-runs | awk '{printf $2"\\|"}'
+ls /mnt/miseqdx*/Illumina/MiSeqAnalysis/ | grep "231001_M70777_0106_000000000-L8HC6\|231004_M70771_0129_000000000-L8HJG\|231004_M70777_0107_000000000-L8HRC\|231005_M70777_0108_000000000-L8TBN\|231008_M70777_0109_000000000-L8HW5\|231104_M70771_0136_000000000-LBD75\|231108_M70784_0007_000000000-LBCNC\|231108_M00662_0460_000000000-L973J\|231201_M70771_0142_000000000-L978G\|231204_M70771_0143_000000000-L932M\|231204_M70777_0115_000000000-L9764"
+ls BaseSpace/Projects/ | grep "BPCTMP350Sample_27Sep2023_KD_Batch1_R1\|TMP_04OCT2023_KD_Batch1_R2\|TMP_04OCT2023_KD_Batch1_R3\|TMP350_Batch2_R1_06Oct2023_TL\|TMP350_Batch2_R2_09Oct2023_TL\|TMP350_Batch2-2_R1_04Nov2023_TL\|TMP350_Batch2-2_R2_08Nov2023_TL\|TMP350_Batch2-2_R3_08Nov2023_TL\|BPCTMP350Sample_01Dec2023_KD_Batch4_R1\|TMP_04Dec2023_KD_Batch4_R2\|TMP_04Dec2023_KD_Batch4_R3"
+
+
+
+
+#from run-files/deciphera_3SNP_UGT1A1-miseq-bwamem-bcftools-0315-051619.sh
+deciphera using fastq from basespace to do bwamem aln without trimming (like Incyte). Celgene use bam from miseq, Incyte use fastq from basespace and do bwamem without trimming, 
+Novartis/Qiagen FLT3 use fastq and do bmwem wt and wto trimmng, BMD use fastq and do bmwem wt trimmng.
+# 10/20/17: about fq and Align folder up to now, now not cleary defined, should rename clearly for future projects,
+# from ./codes/Miseq-1-bwa-gatk-pre-MSR2.2-Incyte.sh
+# ls seqs/* | grep "^fq" | sort -u: fq, fq_275bct3p, fq_cutadapt;  ls seqs/* | grep "^Al" | sort -u: Alignment3, Alignment_bsbwa, Alignment_bsbwa_bamroitrim, Alignment_bwa,
+# Alignment_bwamem, Alignment_bwamem_markdup, Alignment_fq275bct3pbwamemM, Alignment_fqnctbwamem
+# explanation: fq: original file downloaded from basespace etc.; fq_cutadapt: trimmed adapter/primer or for long 275bp reads cut to 151bp first then trim 5p; fq_275bct3p long 275bp read
+# trim 3p adapter; Alignment3: different name from basesapce; Alignment_bsbwa: base space alignment with bwa; Alignment_bsbwa_bamroitrim: basespace alignment with bwa then
+# trimmed with roi; Alignment_bwa: bwa alignment,very likely trimmed first; Alignment_bwamem: bwamem alignment, very likely trimmed first (or cut 151bp first if 275bp);
+# Alignment_bwamem_markdup: bwamem then markdup, for nextera only now; Alignment_fq275bct3pbwamemM: 275bp trim adapter/primer only then bwamem; Alignment_fqnctbwamem: bwamen on original fq
+# Note: in future, should name clearly, such fq, fq_275cutto151trim5p; fq_275trim3p; similiar for Align , program name should also follow simialr pattern
+
+
+
+170905_M00662_0173_000000000-BDHP2  run 12
+170908_M00662_0174_000000000-BBM5M  run 13
+170911_M00662_0175_000000000-BBLM2  run 14
+170914_M00662_0176_000000000-BB5KG  run 15
+170918_M00662_0177_000000000-BDJLV  novartis run 0
+170921_M00662_0178_000000000-BDJKP	BMD_TruSight_run8
+170925_M00662_0179_000000000-BDNTG	run1
+170929_M00662_0180_000000000-BDHNP qiagen run8
+171006_M00662_0184_000000000-BGF8B novartis run1
+171009_M00662_0185_000000000-BGHVW novartis run2
+171013_M00662_0187_000000000-BGHRW novartis run3
+171019_M00662_0189_000000000-BGHPD BMD re run1
+171030_M00662_0193_000000000-BGHYK  BMD Re-Rerun1
+171025_M00662_0193_000000000-BGHB3  BMD Rerun2
+171101_M00662_0194_000000000-B6GYJ  Incyte 12 samples
+171103_M00662_0195_000000000-BH3D2  BMD Rerun3
+171107_M00662_0197_000000000-BH5CM  BMD rerun4
+171109_M00662_0198_000000000-BHD2T novartis run4
+171117_M00662_0203_000000000-BHD3H novartis run5
+171122_M00662_0206_000000000-BHD43  novartis run6
+171208_M00662_0211_000000000-BJPVB  novartis run7
+171211_M00662_0212_000000000-BJRVT  novartis run8
+171215_M00662_0214_000000000-BJNCY  novartis run9
+171218_M00662_0215_000000000-BJWBC  novartis run10
+180829_M00662_0243_000000000-C24C8  Incyte run3
+180904_M00662_0245_000000000-C34YJ  Incyte run4
+180905_M00662_0246_000000000-C36BP  Incyte run5
+180907_M00662_0247_000000000-C35P7  Incyte run6
+180910_M00662_0248_000000000-C33B7  Incyte run7
+180912_M00662_0249_000000000-C385R	Incyte run8
+180921_M00662_0250_000000000-C34TB CALR analysis BMD Trusight run 16, also have 3 Incyte samples, and controls
+181001_M00662_0251_000000000-D52T2  Celgene Nextera TNFRSF17, MSR bam
+181002_M00662_0252_000000000-C5682  Celgene Nextera TNFRSF17, MSR bam
+181015_M00662_0253_000000000-C43MH	Incyte p327 run1
+181108_M00662_0254_000000000-C586J	Celgene Nextera TNFRSF17, MSR bam
+181109_M00662_0255_000000000-C4LKJ	Deciphera_TruSight_Pilotrun
+190320_M00662_0299_000000000-D5HBY	Deciphera 3snp
+190329_M00662_0301_000000000-G3PRN	Deciphera 3snp
+190403_M00662_0302_000000000-G3LMH	Deciphera 3snp
+190408_M00662_0303_000000000-G3LVC	Deciphera 3snp
+190415_M00662_0305_000000000-CFRVH	Incyte run2
+190416_M00662_0306_000000000-CFV6F	Incyte run3
+190418_M00662_0307_000000000-CFV6J 	Incyte run4
+190514_M00662_0314_000000000-G3VCW	Deciphera 3snp
+190515_M00662_0315_000000000-G3WTM	Deciphera 3snp
+190703_M00662_0319_000000000-G3W94	Deciphera 3snp
+190808_M00662_0323_000000000-CJYHW	Incyte run5
+190816_M00662_0325_000000000-CKN52	Incyte run6
+190905_M00662_0327_000000000-CKHF2	Incyte run7
+191022_M70777_0001_000000000-CP6WL	Incyte run8
+200313_M00000_0001_000000000-CAPTMP	CAT TMP run, fq from CAP
+200311_M00662_0341_000000000-CYC9D	Incyte_p249_run10 M00662 (miseq)
+200311_M70771_0002_000000000-CYC8D	Incyte_p249_run11 M70771 (MiSeqDx)	000000000-CYC8D	
+200311_M70777_0002_000000000-CYCH3	Incyte_p249_run12 M70777 (MiSeqDx)	000000000-CYCH3	
+200313_M00662_0342_000000000-J3PR5	Incyte_p249_run13 M00662 (MiSeq)	000000000-J3PR5	
+200313_M70771_0003_000000000-J3NYN	Incyte_p249_run14 M70771 (MiSeqDx)	000000000-J3NYN	
+200316_M00662_0343_000000000-J3PM5	Incyte_p249_run15 00662 (MiSeq)		000000000-J3PM5	
+200702_M70771_0008_000000000-J72L5	Incyte_p327_run9
+200731_M70777_0008_000000000-J7TR4	Incyte_p327_run10
+200731_M70771_0009_000000000-J7TCD	Incyte_p327_run11
+200807_M00662_0356_000000000-G66BR	Deciphera UGT1A1 clinical sample 05Aug2020
+200921_M00662_0359_000000000-J9GTN	Incyte_p249_run16
+200921_M70771_0012_000000000-J9H47	Incyte_p249_run17
+200921_M70777_0009_000000000-J9FLG	Incyte_p249_run18
+210308_M70771_0026_000000000-JH5WV	Incyte_p249_run19
+211001_M70771_0037_000000000-K27GC	Incyte_p249_run20
+211001_M00662_0398_000000000-K27HC	Incyte_p249_run21
+220616_M00662_0417_000000000-KFJ74	Incyte_16jun2022_1
+220616_M70777_0045_000000000-KFHFN	Incyte_16jun2022_2
+220616_M70771_0052_000000000-KFG5L	Incyte_16jun2022_3
+220620_M00662_0418_000000000-KFDBK	Incyte_16jun2022_4
+220705_M70771_0054_000000000-KFG4D	Incyte_05jul2022-6
+220705_M00662_0420_000000000-KFDM5	Incyte_05jul2022-5
+220705_M70777_0046_000000000-KFDLH	Incyte_05jul2022-7
+220707_M00662_0421_000000000-KFJJM	Incyte_05jul2022-8
+220817_M70771_0060_000000000-KHFT4	Incyte_17aug2022-2	miseqdx18
+220815_M70771_0059_000000000-KHFWD	Incyte_15aug2022-2	miseqdx18
+220817_M70777_0049_000000000-KHH29	Incyte_17aug2022-1	miseqdx19
+220815_M70777_0048_000000000-KHF2H	Incyte_15aug2022-1	miseqdx19
+230119_M70771_0082_000000000-KPM3N	Incyte_19jan2023_B4R1-1_MT	miseqdx18
+230123_M70777_0072_000000000-KPTGK	Incyte_23jan2023_B4R1-2	miseqdx19
+230123_M00662_0435_000000000-KPM9D	Incyte_23jan2023_B4R2-2	miseq
+230123_M70771_0083_000000000-KPM6W	Incyte_23jan2023_B4R2-1	miseqdx18
+230130_M00662_0437_000000000-KTLH3	Incyte_30jan2023_B5R2-2	miseq
+230130_M70771_0086_000000000-KTMR2	Incyte_30jan2023_B5R2-1	miseqdx18
+230130_M70777_0075_000000000-KTLGW	Incyte_30jan2023_B5R1-2	miseqdx19
+230128_M70777_0074_000000000-KTM5F	Incyte_28jan2023_B5R1-1	miseqdx19
+230214_M70771_0088_000000000-GFGB4	MICA-Batch3-13Feb2023-LS	miseqdx18
+221215_M70771_0076_000000000-GFGCM	MICA_NGS_Batch2_XL	miseqdx18
+230324_M70777_0078_000000000-L232V	Training_KD_23Mar2023	miseqdx19
+230331_M70777_0079_000000000-KYPVR	Training_KD_30Mar2023_Ind_Run	miseqdx19
+230518_M70777_0082_000000000-L29BN	Incyte_18May2023_B6R1-1	miseqdx19
+230518_M70771_0101_000000000-L28J4	Incyte_18May2023_B6R1-2	miseqdx18
+230518_M00662_0438_000000000-L29FG	Incyte_18May2023_B6R2-1	miseq
+230522_M70777_0083_000000000-L2GFP	Incyte_18May2023_B6R2-2	miseqdx19
+230605_M70777_0087_000000000-L28VV	Incyte_05June2023_Batch8_R2	miseqdx19
+230605_M00662_0442_000000000-L2GDH	Incyte_05June2023_Batch8_R3	miseq
+230607_M70777_0088_000000000-L2GDT	Incyte_07June2023_BT8_R5	miseqdx19
+230929_M00662_0455_000000000-L85F7	TMP_PT2_29Sep2023_TL	miseq
+
+231001_M70777_0106_000000000-L8HC6      BPCTMP350Sample_27Sep2023_KD_Batch1_R1  miseqdx19
+231004_M70771_0129_000000000-L8HJG      TMP_04OCT2023_KD_Batch1_R2      miseqdx18
+231004_M70777_0107_000000000-L8HRC      TMP_04OCT2023_KD_Batch1_R3      miseqdx19
+231005_M70777_0108_000000000-L8TBN      TMP350_Batch2_R1_06Oct2023_TL   miseqdx19
+231008_M70777_0109_000000000-L8HW5      TMP350_Batch2_R2_09Oct2023_TL   miseqdx19
+231104_M70771_0136_000000000-LBD75      TMP350_Batch2-2_R1_04Nov2023_TL miseqdx18
+231108_M70784_0007_000000000-LBCNC      TMP350_Batch2-2_R2_08Nov2023_TL miseqdx21
+231108_M00662_0460_000000000-L973J      TMP350_Batch2-2_R3_08Nov2023_TL miseq
+231201_M70771_0142_000000000-L978G      BPCTMP350Sample_01Dec2023_KD_Batch4_R1  miseqdx18
+231204_M70771_0143_000000000-L932M      TMP_04Dec2023_KD_Batch4_R2      miseqdx18
+231204_M70777_0115_000000000-L9764      TMP_04Dec2023_KD_Batch4_R3      miseqdx19

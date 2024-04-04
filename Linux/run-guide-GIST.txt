@@ -1,0 +1,137 @@
+# Linux shell command guide for run MMD pipeline
+# I will go through this so you can practice.
+# This is for GIST project.
+# All files related to this are available at \\192.168.90.5\public\Bioinformatics\Linux
+****** Please change only the pipeline command file, do not change anything else on the Linux********
+
+Note:  
+
+For GIST use gist_pool1_2.sh and gist_pool3.sh, and also see file project-table.xls for reference.
+
+
+1. Check computer
+Before running, check Linux computer is running OK, if frozen (cannot login or ssh not working), need to restart the computer. 
+For CAM Linux computer: you can press power button to shut down, and then restart computer. 
+For PDX computer, ask Ryan for assistance.
+
+
+2.  Access to Linux
+Use the Linux computer in my office, you can ssh to PDX (username zyan, pass: mmmmmm)
+or
+Install Cygwin on your windows computer, and ssh to CAM and PDX through Cygwin
+
+Follow
+http://Cygwin.com/install.html
+to download and install Cygwin
+I also put Cygwin copy in 
+\\192.168.90.5\public\Bioinformatics\Linux
+Most computers here are 64_bit, so need to install x64 version
+Remember to select and install ssh package
+
+I will show you how to install Cygwin if you are interested, so you can try on your own.
+
+
+3. ssh to Linux computer
+(1) If use Cygwin, you can ssh to Linux computer at both CAM and PDX (if use at home and outside MMD network, you
+need to run SonicWall VPN client at same time so you can access MMD computers) 
+(2) If use my office Linux computer, you do not need to ssh to CAM, you can ssh to PDX
+
+To ssh:
+Open a terminal on my Linux computer or open Cygwin terminal window
+to ssh to CAM, type:
+ssh zyan@192.168.90.111, then input password: mmmmmm
+to ssh to PDX, type:
+ssh zyan@192.168.80.24, then input password: mmmmmm
+
+you will be logged into CAM or PDX Linux computer (if not working after multiple tries, computer may be down, need
+to check)
+
+
+4. Run pipeline
+Now you are under Linux computer after ssh login (you will see hostname zyan-GA-880GM-USB3 for CAM or 
+zyan-ThinkStation-E31 for PDX)
+First type:
+cdl
+to go to working path
+
+Here instead of type pipeline commands one by one, we put all commands in a file (gist_pool1_2.sh, it is already generated), 
+so you can run the commands by executing the file. You can also modify the file for each new run.
+
+We have created a folder called “run-files”, and put all original run file (gist_pool1_2.sh) in it.
+Type
+cd run-files
+to go to this folder
+then type
+cp gist_pool1_2.sh gist_pool1_2-mmd153-date.sh         
+to create a new run file with run name and date for new run (for example mmd-153)
+
+Then edit the new file “gist_pool1_2-mmd153-date.sh”, to edit
+
+Type
+pico gist_pool1_2-mmd153-date.sh 
+to open the gist_pool1_2-mmd153-date.sh file
+
+Modify following:
+(1) "project", which is run folder name under TS folder results/analysis/output/Home/
+(2) "samples", need to check sample sheet to decide which samples are in each batch
+(3) "bar2samplefile", sample sheet file name if it is different
+(4) "roi", roi file name if it is different, only previously used ROIs are available, new ROI file need to be added
+into pipeline first
+(5) "control" if control from other run is used. Change to "control=null" if no control or control is in the same run.
+To modify control, change the project name and barcode part of the long string
+
+type
+ctrl + O (ou not zero), then enter to save during editing
+
+after finishing editing, type
+ctrl + O, then enter to save, ctrl + X  to exit 
+
+open the file again to double check
+
+then type
+chmod +x gist_pool1_2-mmd153-date.sh 
+to make sure it is executable
+
+if you are sure the file is right, then you need to go back to the working folder
+Type
+cdl    or   cd ..
+to go back to working folder
+
+then
+type
+nohup ./run-files/gist_pool1_2-mmd153-date.sh &
+to execute the file and pipeline
+
+to monitor the running process (for example for MMD-165), type following commands:
+project=Auto_user_MMD-165-Notch_PrimerMFR_Val1_167_252
+watch -n 2 "tail -20  tmp/$project.nohup"
+
+
+5. Check files
+Wait several hours and check files in windows share folder to see if pipeline is 
+finished (do not open file before it finishes).  You need to check
+(1) The summary files for the run is generated
+(2) File date is right
+If the files are all generated, open the file to check content.
+
+6. Rerun and troubleshooting
+If something is wrong, repeat above steps and rerun, it may solve the problem.
+Or contact me so I can troubleshoot the problem.
+
+
+
+7. Tips
+(1) Instead of change/edit barcode one by one, you can do a command like:
+./codes/get_bar.sh Auto_user_MMD-149-Notch_Pilot6_151_232 Notch_AmpliSeq_run_barcode_sample_key_sheet.txt
+To get all the barcodes in each pool
+Then copy and paste the barcodes
+
+(2) Instead of change string (such as project name) one by one in “pico”, you can
+do “ctrl+\” to find and replace
+
+(3) Under Linux, you can copy by select string first, then paste by clicking middle button of mouse (or by type shift+ins)
+
+
+
+
+

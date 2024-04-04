@@ -1,0 +1,6 @@
+run	script	pools	run-guide
+Oncomed Notch	notch.sh	pool1,pool2,pool3	run-guide-NOTCH.txt
+Oncomed Notch with ogap	notch-ogap.sh	pool1,pool2,pool3	run-guide-NOTCH-ogap.txt
+Novartis GIST pool1,2	gist_pool1_2.sh	pool1,pool2	run-guide-GIST.txt
+Novartis GIST pool3	gist_pool3.sh	pool3	run-guide-GIST.txt
+Pfizer ALK	alk.sh	pool1,pool2	run-guide-ALK.txt

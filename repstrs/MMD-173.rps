@@ -1,0 +1,15 @@
+
+projects=Oncomed Notch with ogap
+script=notch-ogap.sh
+project=Auto_user_MMD-173-ALK_NGS_PosControlPlasmid_dilution_testing_13Nov2013_175_260
+bar2samplefile=ALK_AmpliSeq_run_barcode_sample_key_sheet.txt
+
+pl=pool1
+samples=IonXpress_029
+
+pl=pool2
+samples=IonXpress_025\|IonXpress_026\|IonXpress_027\|IonXpress_028
+
+pl=pool3
+samples=
+

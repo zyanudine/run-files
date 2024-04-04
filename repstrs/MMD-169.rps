@@ -1,0 +1,25 @@
+#MMD-169
+
+projects=Oncomed Notch with ogap
+script=notch-ogap.sh
+project=Auto_user_MMD-169-Notch_OneTouch12uM_171_256
+bar2samplefile=Notch_AmpliSeq_run_barcode_sample_key_sheet.txt
+
+pl=pool1
+samples=IonXpress_018\|IonXpress_019\|IonXpress_020\|IonXpress_021\|IonXpress_022
+
+pl=pool2
+samples=IonXpress_023\|IonXpress_024\|IonXpress_025\|IonXpress_026\|IonXpress_027
+
+pl=pool3
+samples=IonXpress_028\|IonXpress_029\|IonXpress_030\|IonXpress_031\|IonXpress_032
+
+pl=pool1
+control="/host/DATA/ZYAN/WORK/NEXT-GEN-SEQ/output/Auto_user_MMD-170-Notch_OneTouch10uM_172_257/Varscan-ogap/Auto_user_MMD-170-Notch_OneTouch10uM_172_257_merge_varscan_report.xls+c+IonXpress_018"
+
+pl=pool2
+control="/host/DATA/ZYAN/WORK/NEXT-GEN-SEQ/output/Auto_user_MMD-170-Notch_OneTouch10uM_172_257/Varscan-ogap/Auto_user_MMD-170-Notch_OneTouch10uM_172_257_merge_varscan_report.xls+c+IonXpress_023"
+
+pl=pool3
+control="/host/DATA/ZYAN/WORK/NEXT-GEN-SEQ/output/Auto_user_MMD-170-Notch_OneTouch10uM_172_257/Varscan-ogap/Auto_user_MMD-170-Notch_OneTouch10uM_172_257_merge_varscan_report.xls+c+IonXpress_028"
+

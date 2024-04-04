@@ -1,0 +1,5 @@
+for x in alk-MMD188-121713.sh alk-MMD189-121713.sh alk-MMD190-121913.sh alk-MMD191-121913.sh alk-MMD192-122313.sh alk-MMD194-121413.sh alk-MMD195-122713.sh alk-MMD205-032814.sh alk-MMD207-040714.sh alk-MMD208-040714.sh alk-MMD209-041114.sh alk-MMD210-041114.sh alk-MMD211-041714.sh alk-MMD213-042814.sh alk-MMD216-051214.sh
+do
+nohup ./run-files/$x
+done
+

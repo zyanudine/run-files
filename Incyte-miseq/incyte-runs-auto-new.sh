@@ -1,6 +1,6 @@
 # to generate scripts for multiple runs
 cd run-files/Incyte-miseq
-ln=11
+ln=3
 echo `cat ../miseq-runs | tail -$ln | awk '{print $1}'`  # run
 echo `cat ../miseq-runs | tail -$ln | awk '{print $2}'`  # project
 

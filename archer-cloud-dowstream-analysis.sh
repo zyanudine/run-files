@@ -137,3 +137,15 @@ ls /mnt/archer/ -ltrh
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3775 &
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3776 &
 
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3812 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3813 &
+
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3845 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3846 &
+
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3847 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3848 &
+
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3849 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3850 &
+

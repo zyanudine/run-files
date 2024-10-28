@@ -1,3 +1,6 @@
+# to ignore warning like "nsecureRequestWarning: Unverified HTTPS request is being made to host"
+export PYTHONWARNINGS="ignore:Unverified HTTPS request"
+
 ls /mnt/archer/ -ltrh
 ./codes/Miseq-archer-cloud-dowstream-analysis.sh 3421 &
 ./codes/Miseq-archer-cloud-dowstream-analysis.sh 3422 &
@@ -158,3 +161,11 @@ ls /mnt/archer/ -ltrh
 
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3879 &
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3880 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3881 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3882 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3883 &
+
+
+
+# to ignore warning like "nsecureRequestWarning: Unverified HTTPS request is being made to host"
+export PYTHONWARNINGS="ignore:Unverified HTTPS request"

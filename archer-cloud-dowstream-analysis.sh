@@ -165,6 +165,9 @@ ls /mnt/archer/ -ltrh
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3882 &
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3883 &
 
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3884 &
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3885 &
+
 
 
 # to ignore warning like "nsecureRequestWarning: Unverified HTTPS request is being made to host"

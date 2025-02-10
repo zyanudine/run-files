@@ -174,6 +174,15 @@ ls /mnt/archer/ -ltrh
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3904 &
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978.sh 3905 &
 
+new run:
+export PYTHONWARNINGS="ignore:Unverified HTTPS request"
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978-new.sh 3905 &
+
+re-run:
+rm /mnt/win-hp1/next_gene_seq_wind/share/Miseq-Archer-CMP/3905/Summary_sample* -f
+./codes/Miseq-archer-cloud-dowstream-analysis-download_CMPV1.2_somefiles.sh 3905
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978-nodownload.sh 3905
+
 
 
 

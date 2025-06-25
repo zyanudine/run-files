@@ -194,9 +194,11 @@ rm /mnt/win-hp1/next_gene_seq_wind/share/Miseq-Archer-CMP/3905/Summary_sample* -
 
 
 #6/4/25 new
-./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-icon.sh 4651
-with codes/prjts/archer_server_CMLetc/download_CMPV1.2_icon.py, and icon.analysis.archerdx.com
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-icon-DNA.sh 4658
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-icon-RNA.sh 4649
 
+with codes/prjts/archer_server_CMLetc/download_CMPV1.2_icon_DNA.py, codes/prjts/archer_server_CMLetc/download_CMPV1.2_icon_RNA.py and icon.analysis.archerdx.com
+bam files download diff
 
 
 # to ignore warning like "nsecureRequestWarning: Unverified HTTPS request is being made to host"

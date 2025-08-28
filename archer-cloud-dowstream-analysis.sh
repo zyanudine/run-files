@@ -189,6 +189,8 @@ export PYTHONWARNINGS="ignore:Unverified HTTPS request"
 
 re-run:
 rm /mnt/win-hp1/next_gene_seq_wind/share/Miseq-Archer-CMP/3905/Summary_sample* -f
+rm /mnt/win-hp1/next_gene_seq_wind/share/Miseq-Archer-CMP/Summary/3953*Summary_sample* -f
+
 ./codes/Miseq-archer-cloud-dowstream-analysis-download_CMPV1.2_somefiles.sh 3905
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-Novartisproj0050-0978-nodownload.sh 3905
 
@@ -196,6 +198,7 @@ rm /mnt/win-hp1/next_gene_seq_wind/share/Miseq-Archer-CMP/3905/Summary_sample* -
 #6/4/25 new
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-icon-DNA.sh 4658
 ./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-icon-RNA.sh 4649
+./codes/Miseq-archer-cloud-dowstream-analysis-CMPV1.2-icon-RNA.sh 4663
 
 with codes/prjts/archer_server_CMLetc/download_CMPV1.2_icon_DNA.py, codes/prjts/archer_server_CMLetc/download_CMPV1.2_icon_RNA.py and icon.analysis.archerdx.com
 bam files download diff

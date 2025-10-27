@@ -18,7 +18,7 @@ samples=all
 run=all-but-gatk   # all, varscan, msr
 ext=null        #copy folder extension
 cptype=all # all, varscan, msr
-cpdir=/mnt/win-hp3_1/NGS_Cambridge/NGS_share/Novaseq_WES_3snp
+cpdir=/mnt/win-hp3_1/NGS_Cambridge/next_gene_seq_wind/share/Novaseq_WES_3snp
 project=250324_ADX00139_0021_AHVYMMDMXY    # change project name
 roi=deciphera_3SNP.bed
 roi_mergesort=deciphera_3SNP.bed
@@ -61,7 +61,7 @@ samples=all
 run=all-but-gatk   # all, varscan, msr
 ext=null        #copy folder extension
 cptype=all # all, varscan, msr
-cpdir=/mnt/win-hp3_1/NGS_Cambridge/NGS_share/Novaseq_WES_UGT1A1
+cpdir=/mnt/win-hp3_1/NGS_Cambridge/next_gene_seq_wind/share/Novaseq_WES_UGT1A1
 project=${project}_UGT1A1    # change project name
 roi=deciphera_UGT1A1.bed
 roi_mergesort=deciphera_UGT1A1.bed
@@ -77,5 +77,5 @@ $gn2NM 2>&1 | nohup tee -a tmp/$proj
 # comine 2 pipelines and make report for both varscan and bcftools
 #-----------
 project=$projectorig
-cpdir=/mnt/win-hp3_1/NGS_Cambridge/NGS_share/Novaseq_WES_3snp
+cpdir=/mnt/win-hp3_1/NGS_Cambridge/next_gene_seq_wind/share/Novaseq_WES_3snp
 nohup bash $workdir/codes/Miseq-deciphera_3SNP-reprot.sh $project $alg $cpdir

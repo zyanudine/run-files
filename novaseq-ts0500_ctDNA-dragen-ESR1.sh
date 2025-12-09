@@ -7,7 +7,7 @@ cd $workdir
 
 novaseqdx=Dragen-RUO-NAS/Output-Dragen-RUOserver  # nextseq31, Dragen-RUO-NAS/Output-Dragen-RUOserver
 runfrom=samplesheet    			 	  # “samplesheet” or “compare” compare miseqdx /mnt/nextseqxx/Output/
-samplesheet=novaseq-dragen-ts0500-ESR1-samplesheet.txt  # novaseq-dragen-ts0500-samplesheet.txt
+samplesheet=novaseq-dragen-ts0500-ESR1-samplesheet.txt  # novaseq-dragen-ts0500-ESR1-samplesheet.txt
 proj_flt="TSO500ctDNA"		        	  # filter project with key word in SampleSheet.csv "TSO500ctDNA|TSO500\|P393\|TSOComp\|P22510014\|P45830009"
 sharef="/mnt/win-hp3_1/NGS_Cambridge"             # share folder /mnt/win-hp or /mnt/win-hp3_1/NGS_Cambridge etc.
 

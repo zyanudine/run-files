@@ -53,10 +53,11 @@ nohup bash $workdir/codes/Miseq-general-pindel-archer_incyte_CALR.sh $dtype $pro
 
 
 #mv output to batch folder
-rsync -avls $workdir/output/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem/pindel /mnt/win-hp3_1/NGS_Cambridge/"$batch"/
-rsync -avls $workdir/output/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem/pindel /mnt/win-hp3_1/NGS_Cambridge/"$batch"/
-rsync -avls $workdir/seqs/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem/ /mnt/win-hp3_1/NGS_Cambridge/"$batch"/
-rsync -avls $workdir/seqs/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem/ /mnt/win-hp3_1/NGS_Cambridge/"$batch"/
+mkdir /mnt/win-hp3_1/NGS_Cambridge/"$batch"/Pindel_miseqfq
+rsync -avls $workdir/output/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem/pindel /mnt/win-hp3_1/NGS_Cambridge/"$batch"/Pindel_miseqfq/
+rsync -avls $workdir/output/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem/pindel /mnt/win-hp3_1/NGS_Cambridge/"$batch"/Pindel_miseqfq/
+rsync -avls $workdir/seqs/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem /mnt/win-hp3_1/NGS_Cambridge/"$batch"/Pindel_miseqfq/
+rsync -avls $workdir/seqs/251111_M00000_0000_000000000-testarcherincyteCALR/Alignment_fqnctbwamem /mnt/win-hp3_1/NGS_Cambridge/"$batch"/Pindel_miseqfq/
 
 #rm data from local server
 mv $workdir/output/251111_M00000_0000_000000000-testarcherincyteCALR $workdir/trash/
